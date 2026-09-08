@@ -14,26 +14,26 @@ public class StudentService {
     private StudentRepository repository;
 
     //add student
-    public Student saveStudent(Student student) {
+    public Student saveStudent(Student student){
 
         return repository.save(student);
 
     }
 
     //get all student
-    public List<Student> getAllStudent() {
+    public List<Student> getAllStudent(){
         return repository.findAll();
     }
 
     //find by id student
 
-    public Student getStudentById(Long id) {
+    public Student getStudentById(Long id){
         return repository.findById(id).orElse(null);
     }
 
     //delete student
-    public void deleteStudentById(Long id) {
-        repository.deleteById(id);
+    public void deleteStudentById(Long id){
+         repository.deleteById(id);
     }
 
     //update studetn by id
@@ -42,15 +42,11 @@ public class StudentService {
 
         Student existingStudent = repository.findById(id).orElse(null);
 
-        if (existingStudent != null) {
-            existingStudent.setName(student.getName());
-            existingStudent.setAge(student.getAge());
-            existingStudent.setEmail(student.getEmail());
-            return repository.save(existingStudent);
-        } else {
-            return null;
-        }
 
+        existingStudent.setName(student.getName());
+        existingStudent.setAge(student.getAge());
+        existingStudent.setEmail(student.getEmail());
 
+        return repository.save(existingStudent);
     }
 }
