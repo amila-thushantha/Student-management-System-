@@ -22,7 +22,7 @@ public class StudentController {
 
     }
 
-    //delete student
+    //get all student
     @GetMapping
     public List<Student> getAllStudent(){
         return service.getAllStudent();
@@ -39,6 +39,19 @@ public class StudentController {
     public void deleteStudentById(@PathVariable Long id){
          service.deleteStudentById(id);
     }
+
+    //update Student
+
+    @PutMapping("/{id}")
+    public Student updateStudentById(
+            @PathVariable Long id,
+            @RequestBody Student student){
+        return service.updateStudent(id,student);
+
+    }
+
+
+
 
 
 }
